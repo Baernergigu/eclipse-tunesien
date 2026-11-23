@@ -121,19 +121,79 @@ p {
 }
 
 /* FAQ Styles */
+.faq-category + .faq-category {
+    margin-top: 2rem;
+}
+
+.faq-category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.faq-category-header h2 {
+    margin-bottom: 0;
+}
+
+.faq-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.faq-controls-global {
+    margin: -0.5rem 0 2rem;
+}
+
+.faq-controls button {
+    padding: 0.4rem 0.65rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    color: var(--accent-color);
+    background: transparent;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.faq-controls button:hover,
+.faq-controls button:focus-visible {
+    color: var(--primary-bg);
+    background-color: var(--accent-color);
+}
+
+.faq-controls button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
 .faq-item {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--border-color);
 }
 
-.faq-item h3 {
+.faq-item summary {
     color: var(--text-main);
     font-size: 1.15rem;
-    margin-bottom: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.faq-item summary::marker {
+    color: var(--accent-color);
+}
+
+.faq-item summary:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
 }
 
 .faq-item p {
+    margin-top: 0.75rem;
     margin-bottom: 0;
 }
 
