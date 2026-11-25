@@ -1,47 +1,355 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eclipse Tunesien | Home</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eclipse Tunesien | Home</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Eclipse Tunesien</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="ueber-uns.html">Über uns</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <div class="logo">Eclipse Tunesien</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section class="hero">
-            <h1>Willkommen bei Eclipse Tunesien</h1>
-            <p><strong>Eine aussergewöhnliche Idee, ein gemeinsames Ziel: die totale Sonnenfinsternis 2027 in Tunesien.</strong></p>
-            <p>Als einige von uns 2026 in Spanien waren, um die Sonnenfinsternis zu beobachten, entstand eine zunächst etwas verrückte Idee: Könnten wir für die Sonnenfinsternis am 2. August 2027 einen Flug chartern und für einen Tag nach Tunesien reisen?</p>
-            <p class="notice"><strong>Hinweis:</strong> Diese Webseite ist die erste Anlaufstelle für Informationen und Fragen zur Reise. Sie wird laufend aktualisiert, sobald neue Informationen vorliegen.</p>
-        </section>
+  <main>
+    <section class="hero">
+      <h1>Willkommen bei Eclipse Tunesien</h1>
+      <p><strong>Eine aussergewöhnliche Idee, ein gemeinsames Ziel: die totale Sonnenfinsternis 2027 in Tunesien.</strong></p>
+      <p>Als einige von uns 2026 in Spanien waren, um die Sonnenfinsternis zu beobachten, entstand eine zunächst etwas verrückte Idee: Könnten wir für die Sonnenfinsternis am 2. August 2027 einen Flug chartern und für einen Tag nach Tunesien reisen?</p>
+      <p class="notice"><strong>Hinweis:</strong> Diese Webseite ist die erste Anlaufstelle für Informationen und Fragen zur Reise. Sie wird laufend aktualisiert, sobald neue Informationen vorliegen.</p>
+    </section>
 
-        <section class="content-card">
-            <h2>Von einer verrückten Idee zur Sonnenfinsternis-Reise</h2>
-            <p>Der Gedanke kam nicht ganz aus dem Nichts. Zwei Personen aus unserer Gruppe haben einen Hintergrund in der Fliegerei und Aviatik und begannen bereits während unseres Aufenthalts mit ersten Abklärungen.</p>
-            <p>Eine klassische mehrtägige Reise hatten wir relativ schnell verworfen. Die Sonnenfinsternis findet mitten im Hochsommer statt, und kaum jemand aus unserer Gruppe wollte dafür längere Ferien in einer der möglichen Beobachtungsregionen verbringen. Gleichzeitig waren viele Unterkünfte an interessanten Orten bereits rund ein Jahr im Voraus sehr teuer.</p>
-            <p>Also haben wir uns gefragt: <strong>Warum nicht hinfliegen, die Sonnenfinsternis erleben und wieder zurückfliegen?</strong></p>
-            <p>Nach unserer Rückkehr aus Spanien haben wir die Idee weiterverfolgt. Aus einer kleinen Gruppe wurden nach und nach mehr Leute, alle mit demselben Ziel: <strong>die längste totale Sonnenfinsternis dieses Jahrhunderts gemeinsam zu erleben.</strong></p>
+    <section class="content-card" id="finsternis-karte">
+      <h2>Finsternispfad &amp; Beobachtungsregion Sfax</h2>
+      <p>Am <strong>2. August 2027</strong> zieht der Kernschatten des Mondes vom Nordatlantik über Gibraltar, Nordafrika und <strong>Sfax</strong> bis in den Indischen Ozean. Zoome mit <strong>Ctrl + Scrollen</strong>, wechsle in den <strong>Vollbildmodus</strong> oder klicke auf den Pin für alle Kontaktzeiten.</p>
 
-            <h2>Und aus der Idee wird Realität</h2>
-            <p>Mit Globetrotter Business haben wir schliesslich einen Partner gefunden, der uns bei der Umsetzung unterstützt. Dazu gehören die Organisation des Charterflugs, das Arrangement vor Ort inklusive Transport sowie die Abwicklung von Buchung und Bezahlung.</p>
-            <p>Und damit sind wir heute hier:</p>
-            <p><strong>Weniger als vier Monate nach der ersten Idee können wir eine Reise nach Sfax in Tunesien anbieten, um die totale Sonnenfinsternis möglichst nahe an der Zentrallinie zu erleben.</strong></p>
-        </section>
-    </main>
+      <div id="eclipse-map" role="region" aria-label="Interaktive Karte des Finsternispfads vom 2. August 2027"></div>
 
-    <footer>
-        <p>&copy; 2026 Eclipse Tunesien. Alle Rechte vorbehalten.</p>
-    </footer>
+      <div class="map-legend" aria-label="Kartenlegende">
+        <span class="legend-item"><span class="legend-swatch swatch-zone"></span> Totalitätszone (Kernschatten)</span>
+        <span class="legend-item"><span class="legend-swatch swatch-center"></span> Zentrallinie</span>
+        <span class="legend-item"><span class="legend-swatch swatch-partial"></span> Partielle Zone (Halbschatten)</span>
+        <span class="legend-item"><span class="legend-swatch swatch-pin"></span> Standort Sfax</span>
+      </div>
+
+      <h3>Eckdaten der Finsternis in Sfax (2. August 2027)</h3>
+      <p class="timezone-note"><strong>Wichtig zur Zeitumstellung:</strong> Tunesien nutzt ganzjährig <strong>CET (UTC+1)</strong> ohne Sommerzeit, während in der Schweiz im August <strong>MESZ (UTC+2)</strong> gilt.</p>
+
+      <div class="table-wrapper">
+        <table class="eclipse-table">
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>UTC</th>
+              <th>Lokalzeit Tunesien (UTC+1)</th>
+              <th>Schweizer Zeit / MESZ (UTC+2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Beginn partielle Phase (C1)</td>
+              <td>08:41</td>
+              <td>09:41</td>
+              <td>10:41</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Beginn Totalität (C2)</strong></td>
+              <td><strong>09:53:25</strong></td>
+              <td><strong>10:53:25</strong></td>
+              <td><strong>11:53:25</strong></td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Maximum der Finsternis</strong></td>
+              <td><strong>09:56:15</strong></td>
+              <td><strong>10:56:15</strong></td>
+              <td><strong>11:56:15</strong></td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Ende Totalität (C3)</strong></td>
+              <td><strong>09:59:05</strong></td>
+              <td><strong>10:59:05</strong></td>
+              <td><strong>11:59:05</strong></td>
+            </tr>
+            <tr>
+              <td>Ende partielle Phase (C4)</td>
+              <td>11:16</td>
+              <td>12:16</td>
+              <td>13:16</td>
+            </tr>
+            <tr>
+              <td><strong>Dauer der Totalität</strong></td>
+              <td colspan="3"><strong>ca. 5 Min. 40 Sek.</strong> (Sfax Zentrum; nahe Zentrallinie bis ca. 5 Min. 45 Sek.)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Eclipse Tunesien. Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    const sfaxCoords = [34.7406, 10.7603];
+    const mapElement = document.getElementById('eclipse-map');
+
+    // Karte initialisieren (scrollWheelZoom standardmässig aus -> wird per Ctrl+Scroll aktiviert)
+    const map = L.map('eclipse-map', {
+      scrollWheelZoom: false,
+      minZoom: 2
+    }).setView([32.0, 14.0], 4);
+
+    // Dunkle Kartenkacheln (CARTO Dark Matter) inklusive API-Key
+    L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key=cb1_5fu5_1_949eb69ce7daa72860cb5a46', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      maxZoom: 18
+    }).addTo(map);
+
+    // Hinweis-Overlay für Scrollen ohne Ctrl-Taste
+    const scrollHint = L.DomUtil.create('div', 'map-scroll-hint', map.getContainer());
+    scrollHint.textContent = 'Drücke Ctrl + Scrollen, um die Karte zu zoomen';
+    let scrollHintTimeout = null;
+
+    function showScrollHint() {
+      scrollHint.classList.add('is-visible');
+      clearTimeout(scrollHintTimeout);
+      scrollHintTimeout = setTimeout(() => {
+        scrollHint.classList.remove('is-visible');
+      }, 1600);
+    }
+
+    function hideScrollHint() {
+      scrollHint.classList.remove('is-visible');
+      clearTimeout(scrollHintTimeout);
+    }
+
+    // Vollbild-Status prüfen (nativ oder CSS-Fallback)
+    function isMapFullscreen() {
+      return Boolean(
+        document.fullscreenElement === mapElement ||
+        document.webkitFullscreenElement === mapElement ||
+        mapElement.classList.contains('is-fullscreen')
+      );
+    }
+
+    // Ctrl + Scroll (bzw. Cmd + Scroll auf macOS) zum Zoomen
+    map.getContainer().addEventListener('wheel', (e) => {
+      if (isMapFullscreen()) {
+        if (!map.scrollWheelZoom.enabled()) {
+          map.scrollWheelZoom.enable();
+        }
+        return;
+      }
+
+      if (e.ctrlKey || e.metaKey) {
+        e.preventDefault();
+        hideScrollHint();
+
+        if (!map.scrollWheelZoom.enabled()) {
+          map.scrollWheelZoom.enable();
+          const delta = e.deltaY < 0 ? 1 : -1;
+          map.setZoomAround(map.mouseEventToContainerPoint(e), map.getZoom() + delta);
+        }
+      } else {
+        if (map.scrollWheelZoom.enabled()) {
+          map.scrollWheelZoom.disable();
+        }
+        showScrollHint();
+      }
+    }, { passive: false });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Control' || e.key === 'Meta') {
+        map.scrollWheelZoom.enable();
+        hideScrollHint();
+      } else if (e.key === 'Escape' && mapElement.classList.contains('is-fullscreen')) {
+        exitFallbackFullscreen();
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if ((e.key === 'Control' || e.key === 'Meta') && !isMapFullscreen()) {
+        map.scrollWheelZoom.disable();
+      }
+    });
+
+    window.addEventListener('blur', () => {
+      if (!isMapFullscreen()) {
+        map.scrollWheelZoom.disable();
+      }
+    });
+
+    // Schnellwahl- und Vollbild-Buttons oben rechts auf der Karte
+    const viewControl = L.control({ position: 'topright' });
+    viewControl.onAdd = function () {
+      const container = L.DomUtil.create('div', 'map-view-controls');
+      container.innerHTML = `
+        <button type="button" class="map-view-btn" id="btn-focus-sfax">Fokus Sfax</button>
+        <button type="button" class="map-view-btn" id="btn-full-path">Gesamter Verlauf</button>
+        <button type="button" class="map-view-btn" id="btn-fullscreen" aria-pressed="false" title="Karte im Vollbild anzeigen">&#x26F6; Vollbild</button>
+      `;
+      L.DomEvent.disableClickPropagation(container);
+      return container;
+    };
+    viewControl.addTo(map);
+
+    const btnFullscreen = document.getElementById('btn-fullscreen');
+
+    function syncFullscreenState() {
+      const active = isMapFullscreen();
+      btnFullscreen.setAttribute('aria-pressed', String(active));
+      btnFullscreen.innerHTML = active ? '&#x2715; Vollbild beenden' : '&#x26F6; Vollbild';
+
+      if (active) {
+        map.scrollWheelZoom.enable();
+        hideScrollHint();
+      } else {
+        map.scrollWheelZoom.disable();
+      }
+
+      setTimeout(() => map.invalidateSize(), 120);
+    }
+
+    function enterFallbackFullscreen() {
+      mapElement.classList.add('is-fullscreen');
+      document.body.style.overflow = 'hidden';
+      syncFullscreenState();
+    }
+
+    function exitFallbackFullscreen() {
+      mapElement.classList.remove('is-fullscreen');
+      document.body.style.overflow = '';
+      syncFullscreenState();
+    }
+
+    btnFullscreen.addEventListener('click', () => {
+      if (isMapFullscreen()) {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        } else {
+          exitFallbackFullscreen();
+        }
+      } else if (mapElement.requestFullscreen) {
+        mapElement.requestFullscreen().catch(() => enterFallbackFullscreen());
+      } else if (mapElement.webkitRequestFullscreen) {
+        mapElement.webkitRequestFullscreen();
+      } else {
+        enterFallbackFullscreen();
+      }
+    });
+
+    document.addEventListener('fullscreenchange', syncFullscreenState);
+    document.addEventListener('webkitfullscreenchange', syncFullscreenState);
+
+    document.getElementById('btn-focus-sfax').addEventListener('click', () => {
+      map.flyTo(sfaxCoords, 6, { duration: 1.0 });
+      sfaxMarker.openPopup();
+    });
+
+    document.getElementById('btn-full-path').addEventListener('click', () => {
+      map.flyTo([20.0, 22.0], 2, { duration: 1.0 });
+    });
+
+    // GeoJSON mit partieller Zone, Totalitätszone und Zentrallinie laden
+    fetch('assets/eclipse-2027-tunisia.geojson')
+      .then((response) => {
+        if (!response.ok) throw new Error('GeoJSON konnte nicht geladen werden');
+        return response.json();
+      })
+      .then((geojsonData) => {
+        L.geoJSON(geojsonData, {
+          style: (feature) => {
+            const type = feature.properties && feature.properties.type;
+            if (type === 'partial-zone') {
+              return {
+                color: '#888888',
+                weight: 1,
+                dashArray: '4, 6',
+                opacity: 0.55,
+                fillColor: '#ffcc00',
+                fillOpacity: 0.05
+              };
+            }
+            if (type === 'centerline') {
+              return {
+                color: '#ffcc00',
+                weight: 2.5,
+                dashArray: '8, 6',
+                opacity: 0.95
+              };
+            }
+            return {
+              color: '#ffcc00',
+              weight: 1.5,
+              opacity: 0.75,
+              fillColor: '#ffcc00',
+              fillOpacity: 0.22
+            };
+          },
+          onEachFeature: (feature, layer) => {
+            if (feature.properties && feature.properties.name && feature.properties.type !== 'partial-zone') {
+              layer.bindPopup(`
+                <div class="eclipse-popup">
+                  <h4>${feature.properties.name}</h4>
+                  <p>${feature.properties.description || ''}</p>
+                </div>
+              `);
+            }
+          }
+        }).addTo(map);
+
+        sfaxMarker.bringToFront();
+      })
+      .catch((err) => console.warn('Finsternispfad-Layer:', err));
+
+    // Eigener SVG/CSS-Pin für Sfax
+    const sfaxIcon = L.divIcon({
+      className: 'sfax-pin-wrapper',
+      html: '<div class="sfax-pin"></div>',
+      iconSize: [20, 20],
+      iconAnchor: [10, 10],
+      popupAnchor: [0, -12]
+    });
+
+    const popupContent = `
+      <div class="eclipse-popup">
+        <h4>Beobachtungsregion Sfax</h4>
+        <p class="popup-coords">34.7406° N, 10.7603° E &middot; 2. Aug. 2027</p>
+        <p class="popup-duration">Totalität: <strong>ca. 5 Min. 40 Sek.</strong></p>
+        <table class="popup-table">
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>UTC</th>
+              <th>Lokal</th>
+              <th>MESZ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>C1 (Start)</td><td>08:41</td><td>09:41</td><td>10:41</td></tr>
+            <tr class="popup-hi"><td>C2 (Total)</td><td>09:53:25</td><td>10:53:25</td><td>11:53:25</td></tr>
+            <tr class="popup-hi"><td>Maximum</td><td>09:56:15</td><td>10:56:15</td><td>11:56:15</td></tr>
+            <tr class="popup-hi"><td>C3 (Ende)</td><td>09:59:05</td><td>10:59:05</td><td>11:59:05</td></tr>
+            <tr><td>C4 (Ende)</td><td>11:16</td><td>12:16</td><td>13:16</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+
+    const sfaxMarker = L.marker(sfaxCoords, { icon: sfaxIcon, zIndexOffset: 1000 })
+      .addTo(map)
+      .bindPopup(popupContent, { maxWidth: 320 })
+      .openPopup();
+  </script>
 </body>
 </html>

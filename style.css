@@ -233,3 +233,254 @@ footer {
         font-size: 2rem;
     }
 }
+
+/* Abstand zwischen aufeinanderfolgenden Content-Cards */
+.content-card + .content-card {
+  margin-top: 2rem;
+}
+
+.content-card h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+  font-size: 1.25rem;
+}
+
+/* Interaktive Finsternis-Karte */
+#eclipse-map {
+  height: 460px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  margin-top: 1rem;
+  z-index: 1;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.85rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+}
+
+.swatch-zone {
+  background-color: rgba(255, 204, 0, 0.2);
+  border: 1px solid var(--accent-color);
+}
+
+.swatch-center {
+  height: 0;
+  border-top: 2px dashed var(--accent-color);
+}
+
+.swatch-pin {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* Sfax Pin auf der Karte */
+.sfax-pin {
+  width: 16px;
+  height: 16px;
+  background-color: var(--accent-color);
+  border: 2px solid #121212;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 204, 0, 0.35), 0 0 14px rgba(255, 204, 0, 0.9);
+}
+
+/* Dark-Theme für Leaflet Popups */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background-color: var(--secondary-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: var(--text-muted);
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: var(--accent-color);
+}
+
+.eclipse-popup h4 {
+  margin: 0 0 0.25rem;
+  color: var(--accent-color);
+  font-size: 1rem;
+}
+
+.eclipse-popup p {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.eclipse-popup .popup-duration {
+  color: var(--text-main);
+}
+
+.popup-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+}
+
+.popup-table th,
+.popup-table td {
+  padding: 0.3rem 0.4rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.popup-table th {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.popup-table .popup-hi td {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* Eckdaten-Tabelle unterhalb der Karte */
+.timezone-note {
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.eclipse-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.eclipse-table th,
+.eclipse-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.eclipse-table th {
+  background-color: var(--primary-bg);
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.eclipse-table td {
+  color: var(--text-muted);
+}
+
+.eclipse-table tr.highlight-row td {
+  color: var(--accent-color);
+  background-color: rgba(255, 204, 0, 0.06);
+}
+
+@media (max-width: 768px) {
+  #eclipse-map {
+    height: 360px;
+  }
+
+  .eclipse-table th,
+  .eclipse-table td {
+    padding: 0.6rem 0.65rem;
+    font-size: 0.85rem;
+  }
+}
+
+.swatch-partial {
+  background-color: rgba(255, 204, 0, 0.06);
+  border: 1px dashed #888888;
+}
+
+.map-view-controls {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.map-view-btn {
+  padding: 0.4rem 0.7rem;
+  background-color: var(--secondary-bg);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.map-view-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-bg);
+}
+
+/* Vollbild-Darstellung für die Karte */
+#eclipse-map:fullscreen,
+#eclipse-map:-webkit-full-screen,
+#eclipse-map.is-fullscreen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  z-index: 9999;
+}
+
+/* Hinweis-Overlay bei Scrollen ohne Ctrl */
+.map-scroll-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgba(18, 18, 18, 0.72);
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 800;
+}
+
+.map-scroll-hint.is-visible {
+  opacity: 1;
+}
+
+/* Umbruch der Karten-Buttons auf schmalen Displays */
+.map-view-controls {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: calc(100vw - 70px);
+}
