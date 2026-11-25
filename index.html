@@ -1,411 +1,501 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eclipse Tunesien | Home</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eclipse Tunesien | Home</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <nav>
-      <div class="logo">Eclipse Tunesien</div>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="ueber-uns.html">Über uns</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav>
+            <div class="logo">Eclipse Tunesien</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ueber-uns.html">Über uns</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section class="hero">
-      <h1>Willkommen bei Eclipse Tunesien</h1>
-      <p><strong>Eine aussergewöhnliche Idee, ein gemeinsames Ziel: die totale Sonnenfinsternis 2027 in Tunesien.</strong></p>
-      <p>Als einige von uns 2026 in Spanien waren, um die Sonnenfinsternis zu beobachten, entstand eine zunächst etwas verrückte Idee: Könnten wir für die Sonnenfinsternis am 2. August 2027 einen Flug chartern und für einen Tag nach Tunesien reisen?</p>
-      <p class="notice"><strong>Hinweis:</strong> Diese Webseite ist die erste Anlaufstelle für Informationen und Fragen zur Reise. Sie wird laufend aktualisiert, sobald neue Informationen vorliegen.</p>
-    </section>
+    <main>
+        <section class="hero">
+            <h1>Willkommen bei Eclipse Tunesien</h1>
+            <p><strong>Ein aussergewöhnlicher Tagesausflug zu einem einmaligen Naturschauspiel.</strong></p>
+            <p>Als einige von uns 2026 in Spanien waren, um die Sonnenfinsternis zu beobachten, entstand eine zunächst
+                etwas verrückte Idee: Könnten wir am 2. August 2027 für einen Tag nach Tunesien fliegen, um die
+                Sonnenfinsternis zu erleben?</p>
+            <p>Die Antwort lautet: Ja! Wir organisieren diese Reise nach Sfax und freuen uns, das besondere Ereignis mit
+                allen Interessierten zu teilen.</p>
+            <p class="welcome-goal">Unser gemeinsames Ziel: <strong>die längste totale Sonnenfinsternis dieses
+                    Jahrhunderts gemeinsam zu erleben.</strong></p>
+            <p class="notice"><strong>Hinweis:</strong> Diese Webseite ist die erste Anlaufstelle für Informationen und
+                Fragen zur Reise. Sie wird laufend aktualisiert, sobald neue Informationen vorliegen.</p>
+        </section>
 
-    <section class="content-card" id="finsternis-karte">
-      <h2>Finsternispfad &amp; Beobachtungsregion Sfax</h2>
-      <p>Am <strong>2. August 2027</strong> zieht der Kernschatten des Mondes vom Nordatlantik über Gibraltar, Nordafrika und <strong>Sfax</strong> bis in den Indischen Ozean. Zoome mit <strong>Ctrl + Scrollen</strong>, wechsle in den <strong>Vollbildmodus</strong> oder klicke auf den Pin für alle Kontaktzeiten.</p>
+        <section class="content-card flight-details" aria-labelledby="flight-details-heading">
+            <div class="flight-section-heading">
+                <div>
+                    <p class="flight-date">Montag, 2. August 2027</p>
+                    <h2 id="flight-details-heading">Flug nach Sfax</h2>
+                </div>
+                <a class="booking-button" href="https://www.eclipse-tunesien.ch" target="_blank"
+                    rel="noopener noreferrer">Buchen <span aria-hidden="true">&rarr;</span></a>
+            </div>
 
-      <div id="eclipse-map" role="region" aria-label="Interaktive Karte des Finsternispfads vom 2. August 2027"></div>
+            <div class="flight-routes">
+                <article class="flight-leg">
+                    <p class="flight-leg-label">Hinflug</p>
+                    <div class="flight-route">
+                        <div>
+                            <span class="flight-time">06:30</span>
+                            <span class="flight-airport">Zürich (ZRH)</span>
+                            <span class="flight-action">Abflug</span>
+                        </div>
+                        <span class="flight-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="flight-destination">
+                            <span class="flight-time">07:50</span>
+                            <span class="flight-airport">Sfax Thyna (SFA)</span>
+                            <span class="flight-action">Ankunft</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="flight-leg">
+                    <p class="flight-leg-label">Rückflug</p>
+                    <div class="flight-route">
+                        <div>
+                            <span class="flight-time">14:30</span>
+                            <span class="flight-airport">Sfax Thyna (SFA)</span>
+                            <span class="flight-action">Abflug</span>
+                        </div>
+                        <span class="flight-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="flight-destination">
+                            <span class="flight-time">17:55</span>
+                            <span class="flight-airport">Zürich (ZRH)</span>
+                            <span class="flight-action">Ankunft</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <p class="flight-time-note">Alle Flugzeiten sind Ortszeiten.</p>
 
-      <div class="map-legend" aria-label="Kartenlegende">
-        <span class="legend-item"><span class="legend-swatch swatch-zone"></span> Totalitätszone (Kernschatten)</span>
-        <span class="legend-item"><span class="legend-swatch swatch-center"></span> Zentrallinie</span>
-        <span class="legend-item"><span class="legend-swatch swatch-limit"></span> Nord- &amp; Südgrenze Totalität</span>
-        <span class="legend-item legend-partial-item" id="legend-partial" hidden><span class="legend-swatch swatch-partial"></span> Halbschattengrenze (Partiell)</span>
-        <span class="legend-item"><span class="legend-swatch swatch-pin"></span> Standort Sfax</span>
-      </div>
+            <div class="flight-info-grid">
+                <article class="flight-info">
+                    <h3>Boarding</h3>
+                    <p>Bitte voraussichtlich 90 Minuten vor Abflug boardingbereit sein: um <strong>05:00 Uhr in
+                            Zürich</strong> und um <strong>13:00 Uhr in Sfax</strong>. Das konkrete Gate und der
+                        Treffpunkt werden rechtzeitig bekannt gegeben.</p>
+                </article>
+                <article class="flight-info">
+                    <h3>Gepäck</h3>
+                    <p>Es ist <strong>kein Aufgabegepäck</strong> vorgesehen. Informationen zu Handgepäck und
+                        Ausrüstung findest du im <a href="faq.html#faq-flug">FAQ-Kapitel „Flug und Gepäck“</a>.</p>
+                </article>
+                <article class="flight-info">
+                    <h3>Arrangement</h3>
+                    <p><strong>CHF 750.– pro Person</strong></p>
+                    <p>Eine Hotelübernachtung für die Nacht vor dem Abflug kann optional dazugebucht werden.</p>
+                </article>
+            </div>
 
-      <h3>Eckdaten der Finsternis in Sfax (2. August 2027)</h3>
-      <p class="timezone-note"><strong>Wichtig zur Zeitumstellung:</strong> Tunesien nutzt ganzjährig <strong>CET (UTC+1)</strong> ohne Sommerzeit, während in der Schweiz im August <strong>MESZ (UTC+2)</strong> gilt.</p>
+            <p class="flight-note">Die Flugzeiten sind provisorisch und nicht garantiert. Änderungen sind möglich;
+                aktuelle Informationen und Treffpunkte teilen wir rechtzeitig mit.</p>
+        </section>
 
-      <div class="table-wrapper">
-        <table class="eclipse-table">
-          <thead>
-            <tr>
-              <th>Phase</th>
-              <th>UTC</th>
-              <th>Lokalzeit Tunesien (UTC+1)</th>
-              <th>Schweizer Zeit / MESZ (UTC+2)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Beginn partielle Phase (C1)</td>
-              <td>07:56:27</td>
-              <td>08:56:27</td>
-              <td>09:56:27</td>
-            </tr>
-            <tr class="highlight-row">
-              <td><strong>Beginn Totalität (C2)</strong></td>
-              <td><strong>09:08:47</strong></td>
-              <td><strong>10:08:47</strong></td>
-              <td><strong>11:08:47</strong></td>
-            </tr>
-            <tr class="highlight-row">
-              <td><strong>Maximum der Finsternis</strong></td>
-              <td><strong>09:11:39</strong></td>
-              <td><strong>10:11:39</strong></td>
-              <td><strong>11:11:39</strong></td>
-            </tr>
-            <tr class="highlight-row">
-              <td><strong>Ende Totalität (C3)</strong></td>
-              <td><strong>09:14:28</strong></td>
-              <td><strong>10:14:28</strong></td>
-              <td><strong>11:14:28</strong></td>
-            </tr>
-            <tr>
-              <td>Ende partielle Phase (C4)</td>
-              <td>10:31:48</td>
-              <td>11:31:48</td>
-              <td>12:31:48</td>
-            </tr>
-            <tr>
-              <td><strong>Dauer der Totalität</strong></td>
-              <td colspan="3"><strong>5 Min. 41,2 Sek.</strong> (inkl. Mondrand-Korrektur; ca. 19,7 km nördlich der Zentrallinie)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+        <section class="content-card" id="finsternis-karte">
+            <h2>Finsternispfad &amp; Beobachtungsregion Sfax</h2>
+            <p>Am <strong>2. August 2027</strong> zieht der Kernschatten des Mondes vom Nordatlantik über Gibraltar,
+                Nordafrika und <strong>Sfax</strong> bis in den Indischen Ozean. Zoome mit <strong>Ctrl +
+                    Scrollen</strong>, wechsle in den <strong>Vollbildmodus</strong> oder klicke auf den Pin für alle
+                Kontaktzeiten.</p>
 
-  <footer>
-    <p>&copy; 2026 Eclipse Tunesien. Alle Rechte vorbehalten.</p>
-  </footer>
+            <div id="eclipse-map" role="region" aria-label="Interaktive Karte des Finsternispfads vom 2. August 2027">
+            </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script>
-    const sfaxCoords = [34.74062, 10.76030];
-    const mapElement = document.getElementById('eclipse-map');
+            <div class="map-legend" aria-label="Kartenlegende">
+                <span class="legend-item"><span class="legend-swatch swatch-zone"></span> Totalitätszone
+                    (Kernschatten)</span>
+                <span class="legend-item"><span class="legend-swatch swatch-center"></span> Zentrallinie</span>
+                <span class="legend-item"><span class="legend-swatch swatch-limit"></span> Nord- &amp; Südgrenze
+                    Totalität</span>
+                <span class="legend-item legend-partial-item" id="legend-partial" hidden><span
+                        class="legend-swatch swatch-partial"></span> Halbschattengrenze (Partiell)</span>
+                <span class="legend-item"><span class="legend-swatch swatch-pin"></span> Standort Sfax</span>
+            </div>
 
-    // Pfade zu euren beiden hochauflösenden GeoJSON-Dateien
-    const geojsonFiles = [
-      'assets/TSE_2027_08_02__51d81c9661922-1.json',
-      'assets/TSE_2027_08_02__51d81c9661922-2.json'
-    ];
+            <h3>Eckdaten der Finsternis in Sfax (2. August 2027)</h3>
+            <p class="timezone-note"><strong>Wichtig zur Zeitumstellung:</strong> Tunesien nutzt ganzjährig <strong>CET
+                    (UTC+1)</strong> ohne Sommerzeit, während in der Schweiz im August <strong>MESZ (UTC+2)</strong>
+                gilt.</p>
 
-    // Karte initialisieren (scrollWheelZoom standardmässig aus -> wird per Ctrl+Scroll aktiviert)
-    const map = L.map('eclipse-map', {
-      scrollWheelZoom: false,
-      minZoom: 2
-    }).setView([33.5, 11.5], 6);
+            <div class="table-wrapper">
+                <table class="eclipse-table">
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>UTC</th>
+                            <th>Lokalzeit Tunesien (UTC+1)</th>
+                            <th>Schweizer Zeit / MESZ (UTC+2)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Beginn partielle Phase (C1)</td>
+                            <td>07:56:27</td>
+                            <td>08:56:27</td>
+                            <td>09:56:27</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Beginn Totalität (C2)</strong></td>
+                            <td><strong>09:08:47</strong></td>
+                            <td><strong>10:08:47</strong></td>
+                            <td><strong>11:08:47</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Maximum der Finsternis</strong></td>
+                            <td><strong>09:11:39</strong></td>
+                            <td><strong>10:11:39</strong></td>
+                            <td><strong>11:11:39</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Ende Totalität (C3)</strong></td>
+                            <td><strong>09:14:28</strong></td>
+                            <td><strong>10:14:28</strong></td>
+                            <td><strong>11:14:28</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Ende partielle Phase (C4)</td>
+                            <td>10:31:48</td>
+                            <td>11:31:48</td>
+                            <td>12:31:48</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dauer der Totalität</strong></td>
+                            <td colspan="3"><strong>5 Min. 41,2 Sek.</strong> (inkl. Mondrand-Korrektur; ca. 19,7 km
+                                nördlich der Zentrallinie)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 
-    // Dunkle Kartenkacheln (CARTO Dark Matter) inklusive API-Key
-    L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key=cb1_5fu5_1_949eb69ce7daa72860cb5a46', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      maxZoom: 18
-    }).addTo(map);
+    <footer>
+        <p>&copy; 2026 Eclipse Tunesien. Alle Rechte vorbehalten.</p>
+    </footer>
 
-    // Hinweis-Overlay für Scrollen ohne Ctrl-Taste
-    const scrollHint = L.DomUtil.create('div', 'map-scroll-hint', map.getContainer());
-    scrollHint.textContent = 'Drücke Ctrl + Scrollen, um die Karte zu zoomen';
-    let scrollHintTimeout = null;
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const sfaxCoords = [34.74062, 10.76030];
+        const mapElement = document.getElementById('eclipse-map');
 
-    function showScrollHint() {
-      scrollHint.classList.add('is-visible');
-      clearTimeout(scrollHintTimeout);
-      scrollHintTimeout = setTimeout(() => {
-        scrollHint.classList.remove('is-visible');
-      }, 1600);
-    }
+        // Pfade zu euren beiden hochauflösenden GeoJSON-Dateien
+        const geojsonFiles = [
+            'assets/TSE_2027_08_02__51d81c9661922-1.json',
+            'assets/TSE_2027_08_02__51d81c9661922-2.json'
+        ];
 
-    function hideScrollHint() {
-      scrollHint.classList.remove('is-visible');
-      clearTimeout(scrollHintTimeout);
-    }
+        // Karte initialisieren (scrollWheelZoom standardmässig aus -> wird per Ctrl+Scroll aktiviert)
+        const map = L.map('eclipse-map', {
+            scrollWheelZoom: false,
+            minZoom: 2
+        }).setView([33.5, 11.5], 6);
 
-    // Vollbild-Status prüfen (nativ oder CSS-Fallback)
-    function isMapFullscreen() {
-      return Boolean(
-        document.fullscreenElement === mapElement ||
-        document.webkitFullscreenElement === mapElement ||
-        mapElement.classList.contains('is-fullscreen')
-      );
-    }
+        // Dunkle Kartenkacheln (CARTO Dark Matter) inklusive API-Key
+        L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key=cb1_5fu5_1_949eb69ce7daa72860cb5a46', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            maxZoom: 18
+        }).addTo(map);
 
-    // Ctrl + Scroll (bzw. Cmd + Scroll auf macOS) zum Zoomen
-    map.getContainer().addEventListener('wheel', (e) => {
-      if (isMapFullscreen()) {
-        if (!map.scrollWheelZoom.enabled()) {
-          map.scrollWheelZoom.enable();
+        // Hinweis-Overlay für Scrollen ohne Ctrl-Taste
+        const scrollHint = L.DomUtil.create('div', 'map-scroll-hint', map.getContainer());
+        scrollHint.textContent = 'Drücke Ctrl + Scrollen, um die Karte zu zoomen';
+        let scrollHintTimeout = null;
+
+        function showScrollHint() {
+            scrollHint.classList.add('is-visible');
+            clearTimeout(scrollHintTimeout);
+            scrollHintTimeout = setTimeout(() => {
+                scrollHint.classList.remove('is-visible');
+            }, 1600);
         }
-        return;
-      }
 
-      if (e.ctrlKey || e.metaKey) {
-        e.preventDefault();
-        hideScrollHint();
-
-        if (!map.scrollWheelZoom.enabled()) {
-          map.scrollWheelZoom.enable();
-          const delta = e.deltaY < 0 ? 1 : -1;
-          map.setZoomAround(map.mouseEventToContainerPoint(e), map.getZoom() + delta);
+        function hideScrollHint() {
+            scrollHint.classList.remove('is-visible');
+            clearTimeout(scrollHintTimeout);
         }
-      } else {
-        if (map.scrollWheelZoom.enabled()) {
-          map.scrollWheelZoom.disable();
+
+        // Vollbild-Status prüfen (nativ oder CSS-Fallback)
+        function isMapFullscreen() {
+            return Boolean(
+                document.fullscreenElement === mapElement ||
+                document.webkitFullscreenElement === mapElement ||
+                mapElement.classList.contains('is-fullscreen')
+            );
         }
-        showScrollHint();
-      }
-    }, { passive: false });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Control' || e.key === 'Meta') {
-        map.scrollWheelZoom.enable();
-        hideScrollHint();
-      } else if (e.key === 'Escape' && mapElement.classList.contains('is-fullscreen')) {
-        exitFallbackFullscreen();
-      }
-    });
+        // Ctrl + Scroll (bzw. Cmd + Scroll auf macOS) zum Zoomen
+        map.getContainer().addEventListener('wheel', (e) => {
+            if (isMapFullscreen()) {
+                if (!map.scrollWheelZoom.enabled()) {
+                    map.scrollWheelZoom.enable();
+                }
+                return;
+            }
 
-    document.addEventListener('keyup', (e) => {
-      if ((e.key === 'Control' || e.key === 'Meta') && !isMapFullscreen()) {
-        map.scrollWheelZoom.disable();
-      }
-    });
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                hideScrollHint();
 
-    window.addEventListener('blur', () => {
-      if (!isMapFullscreen()) {
-        map.scrollWheelZoom.disable();
-      }
-    });
+                if (!map.scrollWheelZoom.enabled()) {
+                    map.scrollWheelZoom.enable();
+                    const delta = e.deltaY < 0 ? 1 : -1;
+                    map.setZoomAround(map.mouseEventToContainerPoint(e), map.getZoom() + delta);
+                }
+            } else {
+                if (map.scrollWheelZoom.enabled()) {
+                    map.scrollWheelZoom.disable();
+                }
+                showScrollHint();
+            }
+        }, { passive: false });
 
-    // Schnellwahl- und Vollbild-Buttons oben rechts auf der Karte
-    const viewControl = L.control({ position: 'topright' });
-    viewControl.onAdd = function () {
-      const container = L.DomUtil.create('div', 'map-view-controls');
-      container.innerHTML = `
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Control' || e.key === 'Meta') {
+                map.scrollWheelZoom.enable();
+                hideScrollHint();
+            } else if (e.key === 'Escape' && mapElement.classList.contains('is-fullscreen')) {
+                exitFallbackFullscreen();
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if ((e.key === 'Control' || e.key === 'Meta') && !isMapFullscreen()) {
+                map.scrollWheelZoom.disable();
+            }
+        });
+
+        window.addEventListener('blur', () => {
+            if (!isMapFullscreen()) {
+                map.scrollWheelZoom.disable();
+            }
+        });
+
+        // Schnellwahl- und Vollbild-Buttons oben rechts auf der Karte
+        const viewControl = L.control({ position: 'topright' });
+        viewControl.onAdd = function () {
+            const container = L.DomUtil.create('div', 'map-view-controls');
+            container.innerHTML = `
         <button type="button" class="map-view-btn" id="btn-focus-sfax">Fokus Sfax</button>
         <button type="button" class="map-view-btn" id="btn-full-path">Gesamter Verlauf</button>
         <button type="button" class="map-view-btn" id="btn-fullscreen" aria-pressed="false" title="Karte im Vollbild anzeigen">&#x26F6; Vollbild</button>
       `;
-      L.DomEvent.disableClickPropagation(container);
-      return container;
-    };
-    viewControl.addTo(map);
-
-    const btnFullscreen = document.getElementById('btn-fullscreen');
-
-    function syncFullscreenState() {
-      const active = isMapFullscreen();
-      btnFullscreen.setAttribute('aria-pressed', String(active));
-      btnFullscreen.innerHTML = active ? '&#x2715; Vollbild beenden' : '&#x26F6; Vollbild';
-
-      if (active) {
-        map.scrollWheelZoom.enable();
-        hideScrollHint();
-      } else {
-        map.scrollWheelZoom.disable();
-      }
-
-      setTimeout(() => map.invalidateSize(), 120);
-    }
-
-    function enterFallbackFullscreen() {
-      mapElement.classList.add('is-fullscreen');
-      document.body.style.overflow = 'hidden';
-      syncFullscreenState();
-    }
-
-    function exitFallbackFullscreen() {
-      mapElement.classList.remove('is-fullscreen');
-      document.body.style.overflow = '';
-      syncFullscreenState();
-    }
-
-    btnFullscreen.addEventListener('click', () => {
-      if (isMapFullscreen()) {
-        if (document.fullscreenElement || document.webkitFullscreenElement) {
-          (document.exitFullscreen || document.webkitExitFullscreen).call(document);
-        } else {
-          exitFallbackFullscreen();
-        }
-      } else if (mapElement.requestFullscreen) {
-        mapElement.requestFullscreen().catch(() => enterFallbackFullscreen());
-      } else if (mapElement.webkitRequestFullscreen) {
-        mapElement.webkitRequestFullscreen();
-      } else {
-        enterFallbackFullscreen();
-      }
-    });
-
-    document.addEventListener('fullscreenchange', syncFullscreenState);
-    document.addEventListener('webkitfullscreenchange', syncFullscreenState);
-
-    document.getElementById('btn-focus-sfax').addEventListener('click', () => {
-      map.flyTo(sfaxCoords, 7, { duration: 1.0 });
-      sfaxMarker.openPopup();
-    });
-
-    document.getElementById('btn-full-path').addEventListener('click', () => {
-      map.flyTo([20.0, 22.0], 3, { duration: 1.0 });
-    });
-
-    // Deutsche Labels & Beschreibungen für die Feature-Namen aus dem Export
-    function getFeatureMeta(rawName) {
-      const name = (rawName || '').toLowerCase();
-      if (name === 'umbra') {
-        return {
-          title: 'Totalitätszone (Kernschatten)',
-          description: 'Vollständige Verdeckung der Sonne (in Sfax 5 Min. 41 Sek., Maximum in Ägypten mit 6 Min. 23 Sek.).'
+            L.DomEvent.disableClickPropagation(container);
+            return container;
         };
-      }
-      if (name === 'central line') {
-        return {
-          title: 'Zentrallinie (maximale Totalität)',
-          description: 'Linie mit der längsten Totalitätsdauer entlang des Kernschattenpfads.'
-        };
-      }
-      if (name === 'northern limit') {
-        return {
-          title: 'Nordgrenze der Totalität',
-          description: 'Nördlicher Rand des Kernschattens.'
-        };
-      }
-      if (name === 'southern limit') {
-        return {
-          title: 'Südgrenze der Totalität',
-          description: 'Südlicher Rand des Kernschattens.'
-        };
-      }
-      if (name.includes('penumbra')) {
-        return {
-          title: 'Partielle Zone (Halbschatten)',
-          description: 'Äussere Grenze der partiellen Sonnenfinsternis.'
-        };
-      }
-      if (name.includes('greatest')) {
-        return {
-          title: 'Globales Maximum der Finsternis',
-          description: 'Punkt der längsten Totalität weltweit (nahe Luxor, Ägypten: 6 Min. 23 Sek.).'
-        };
-      }
-      return { title: rawName || 'Finsternispfad', description: '' };
-    }
+        viewControl.addTo(map);
 
-    function styleEclipseFeature(feature) {
-      const name = ((feature.properties && feature.properties.name) || '').toLowerCase();
+        const btnFullscreen = document.getElementById('btn-fullscreen');
 
-      if (name === 'umbra' || feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
-        return {
-          stroke: false,
-          fillColor: '#ffcc00',
-          fillOpacity: 0.22
-        };
-      }
+        function syncFullscreenState() {
+            const active = isMapFullscreen();
+            btnFullscreen.setAttribute('aria-pressed', String(active));
+            btnFullscreen.innerHTML = active ? '&#x2715; Vollbild beenden' : '&#x26F6; Vollbild';
 
-      if (name === 'central line') {
-        return {
-          color: '#ffcc00',
-          weight: 2.5,
-          dashArray: '8, 6',
-          opacity: 0.95
-        };
-      }
+            if (active) {
+                map.scrollWheelZoom.enable();
+                hideScrollHint();
+            } else {
+                map.scrollWheelZoom.disable();
+            }
 
-      if (name === 'northern limit' || name === 'southern limit') {
-        return {
-          color: '#ffcc00',
-          weight: 1.5,
-          opacity: 0.8
-        };
-      }
-
-      if (name.includes('penumbra')) {
-        const partialLegend = document.getElementById('legend-partial');
-        if (partialLegend) partialLegend.hidden = false;
-        return {
-          color: '#888888',
-          weight: 1.2,
-          dashArray: '4, 6',
-          opacity: 0.6
-        };
-      }
-
-      return {
-        color: '#ffcc00',
-        weight: 1.2,
-        opacity: 0.65
-      };
-    }
-
-    // Beide GeoJSON-Dateien laden und auf der Karte darstellen
-    Promise.allSettled(
-      geojsonFiles.map((url) =>
-        fetch(url).then((res) => {
-          if (!res.ok) throw new Error(`HTTP ${res.status} für ${url}`);
-          return res.json();
-        })
-      )
-    ).then((results) => {
-      results.forEach((result) => {
-        if (result.status !== 'fulfilled') {
-          console.warn('Finsternispfad-Layer konnte nicht geladen werden:', result.reason);
-          return;
+            setTimeout(() => map.invalidateSize(), 120);
         }
 
-        L.geoJSON(result.value, {
-          style: styleEclipseFeature,
-          pointToLayer: (feature, latlng) => {
-            return L.circleMarker(latlng, {
-              radius: 5,
-              color: '#121212',
-              weight: 1.5,
-              fillColor: '#ffcc00',
-              fillOpacity: 0.9
-            });
-          },
-          onEachFeature: (feature, layer) => {
-            const rawName = feature.properties && feature.properties.name;
-            if (!rawName) return;
-            const meta = getFeatureMeta(rawName);
-            layer.bindPopup(`
+        function enterFallbackFullscreen() {
+            mapElement.classList.add('is-fullscreen');
+            document.body.style.overflow = 'hidden';
+            syncFullscreenState();
+        }
+
+        function exitFallbackFullscreen() {
+            mapElement.classList.remove('is-fullscreen');
+            document.body.style.overflow = '';
+            syncFullscreenState();
+        }
+
+        btnFullscreen.addEventListener('click', () => {
+            if (isMapFullscreen()) {
+                if (document.fullscreenElement || document.webkitFullscreenElement) {
+                    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+                } else {
+                    exitFallbackFullscreen();
+                }
+            } else if (mapElement.requestFullscreen) {
+                mapElement.requestFullscreen().catch(() => enterFallbackFullscreen());
+            } else if (mapElement.webkitRequestFullscreen) {
+                mapElement.webkitRequestFullscreen();
+            } else {
+                enterFallbackFullscreen();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', syncFullscreenState);
+        document.addEventListener('webkitfullscreenchange', syncFullscreenState);
+
+        document.getElementById('btn-focus-sfax').addEventListener('click', () => {
+            map.flyTo(sfaxCoords, 7, { duration: 1.0 });
+            sfaxMarker.openPopup();
+        });
+
+        document.getElementById('btn-full-path').addEventListener('click', () => {
+            map.flyTo([20.0, 22.0], 3, { duration: 1.0 });
+        });
+
+        // Deutsche Labels & Beschreibungen für die Feature-Namen aus dem Export
+        function getFeatureMeta(rawName) {
+            const name = (rawName || '').toLowerCase();
+            if (name === 'umbra') {
+                return {
+                    title: 'Totalitätszone (Kernschatten)',
+                    description: 'Vollständige Verdeckung der Sonne (in Sfax 5 Min. 41 Sek., Maximum in Ägypten mit 6 Min. 23 Sek.).'
+                };
+            }
+            if (name === 'central line') {
+                return {
+                    title: 'Zentrallinie (maximale Totalität)',
+                    description: 'Linie mit der längsten Totalitätsdauer entlang des Kernschattenpfads.'
+                };
+            }
+            if (name === 'northern limit') {
+                return {
+                    title: 'Nordgrenze der Totalität',
+                    description: 'Nördlicher Rand des Kernschattens.'
+                };
+            }
+            if (name === 'southern limit') {
+                return {
+                    title: 'Südgrenze der Totalität',
+                    description: 'Südlicher Rand des Kernschattens.'
+                };
+            }
+            if (name.includes('penumbra')) {
+                return {
+                    title: 'Partielle Zone (Halbschatten)',
+                    description: 'Äussere Grenze der partiellen Sonnenfinsternis.'
+                };
+            }
+            if (name.includes('greatest')) {
+                return {
+                    title: 'Globales Maximum der Finsternis',
+                    description: 'Punkt der längsten Totalität weltweit (nahe Luxor, Ägypten: 6 Min. 23 Sek.).'
+                };
+            }
+            return { title: rawName || 'Finsternispfad', description: '' };
+        }
+
+        function styleEclipseFeature(feature) {
+            const name = ((feature.properties && feature.properties.name) || '').toLowerCase();
+
+            if (name === 'umbra' || feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+                return {
+                    stroke: false,
+                    fillColor: '#ffcc00',
+                    fillOpacity: 0.22
+                };
+            }
+
+            if (name === 'central line') {
+                return {
+                    color: '#ffcc00',
+                    weight: 2.5,
+                    dashArray: '8, 6',
+                    opacity: 0.95
+                };
+            }
+
+            if (name === 'northern limit' || name === 'southern limit') {
+                return {
+                    color: '#ffcc00',
+                    weight: 1.5,
+                    opacity: 0.8
+                };
+            }
+
+            if (name.includes('penumbra')) {
+                const partialLegend = document.getElementById('legend-partial');
+                if (partialLegend) partialLegend.hidden = false;
+                return {
+                    color: '#888888',
+                    weight: 1.2,
+                    dashArray: '4, 6',
+                    opacity: 0.6
+                };
+            }
+
+            return {
+                color: '#ffcc00',
+                weight: 1.2,
+                opacity: 0.65
+            };
+        }
+
+        // Beide GeoJSON-Dateien laden und auf der Karte darstellen
+        Promise.allSettled(
+            geojsonFiles.map((url) =>
+                fetch(url).then((res) => {
+                    if (!res.ok) throw new Error(`HTTP ${res.status} für ${url}`);
+                    return res.json();
+                })
+            )
+        ).then((results) => {
+            results.forEach((result) => {
+                if (result.status !== 'fulfilled') {
+                    console.warn('Finsternispfad-Layer konnte nicht geladen werden:', result.reason);
+                    return;
+                }
+
+                L.geoJSON(result.value, {
+                    style: styleEclipseFeature,
+                    pointToLayer: (feature, latlng) => {
+                        return L.circleMarker(latlng, {
+                            radius: 5,
+                            color: '#121212',
+                            weight: 1.5,
+                            fillColor: '#ffcc00',
+                            fillOpacity: 0.9
+                        });
+                    },
+                    onEachFeature: (feature, layer) => {
+                        const rawName = feature.properties && feature.properties.name;
+                        if (!rawName) return;
+                        const meta = getFeatureMeta(rawName);
+                        layer.bindPopup(`
               <div class="eclipse-popup">
                 <h4>${meta.title}</h4>
                 ${meta.description ? `<p>${meta.description}</p>` : ''}
               </div>
             `);
-          }
-        }).addTo(map);
-      });
-    });
+                    }
+                }).addTo(map);
+            });
+        });
 
-    // Eigener SVG/CSS-Pin für Sfax
-    const sfaxIcon = L.divIcon({
-      className: 'sfax-pin-wrapper',
-      html: '<div class="sfax-pin"></div>',
-      iconSize: [20, 20],
-      iconAnchor: [10, 10],
-      popupAnchor: [0, -12]
-    });
+        // Eigener SVG/CSS-Pin für Sfax
+        const sfaxIcon = L.divIcon({
+            className: 'sfax-pin-wrapper',
+            html: '<div class="sfax-pin"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10],
+            popupAnchor: [0, -12]
+        });
 
-    const popupContent = `
+        const popupContent = `
       <div class="eclipse-popup">
         <h4>Beobachtungsregion Sfax</h4>
         <p class="popup-coords">34.74062° N, 10.76030° E &middot; 2. Aug. 2027</p>
@@ -430,10 +520,11 @@
       </div>
     `;
 
-    const sfaxMarker = L.marker(sfaxCoords, { icon: sfaxIcon, zIndexOffset: 1000 })
-      .addTo(map)
-      .bindPopup(popupContent, { maxWidth: 320 })
-      .openPopup();
-  </script>
+        const sfaxMarker = L.marker(sfaxCoords, { icon: sfaxIcon, zIndexOffset: 1000 })
+            .addTo(map)
+            .bindPopup(popupContent, { maxWidth: 320 })
+            .openPopup();
+    </script>
 </body>
+
 </html>
