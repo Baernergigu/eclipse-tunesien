@@ -36,7 +36,8 @@
       <div class="map-legend" aria-label="Kartenlegende">
         <span class="legend-item"><span class="legend-swatch swatch-zone"></span> Totalitätszone (Kernschatten)</span>
         <span class="legend-item"><span class="legend-swatch swatch-center"></span> Zentrallinie</span>
-        <span class="legend-item"><span class="legend-swatch swatch-partial"></span> Partielle Zone (Halbschatten)</span>
+        <span class="legend-item"><span class="legend-swatch swatch-limit"></span> Nord- &amp; Südgrenze Totalität</span>
+        <span class="legend-item legend-partial-item" id="legend-partial" hidden><span class="legend-swatch swatch-partial"></span> Halbschattengrenze (Partiell)</span>
         <span class="legend-item"><span class="legend-swatch swatch-pin"></span> Standort Sfax</span>
       </div>
 
@@ -56,37 +57,37 @@
           <tbody>
             <tr>
               <td>Beginn partielle Phase (C1)</td>
-              <td>08:41</td>
-              <td>09:41</td>
-              <td>10:41</td>
+              <td>07:56:27</td>
+              <td>08:56:27</td>
+              <td>09:56:27</td>
             </tr>
             <tr class="highlight-row">
               <td><strong>Beginn Totalität (C2)</strong></td>
-              <td><strong>09:53:25</strong></td>
-              <td><strong>10:53:25</strong></td>
-              <td><strong>11:53:25</strong></td>
+              <td><strong>09:08:47</strong></td>
+              <td><strong>10:08:47</strong></td>
+              <td><strong>11:08:47</strong></td>
             </tr>
             <tr class="highlight-row">
               <td><strong>Maximum der Finsternis</strong></td>
-              <td><strong>09:56:15</strong></td>
-              <td><strong>10:56:15</strong></td>
-              <td><strong>11:56:15</strong></td>
+              <td><strong>09:11:39</strong></td>
+              <td><strong>10:11:39</strong></td>
+              <td><strong>11:11:39</strong></td>
             </tr>
             <tr class="highlight-row">
               <td><strong>Ende Totalität (C3)</strong></td>
-              <td><strong>09:59:05</strong></td>
-              <td><strong>10:59:05</strong></td>
-              <td><strong>11:59:05</strong></td>
+              <td><strong>09:14:28</strong></td>
+              <td><strong>10:14:28</strong></td>
+              <td><strong>11:14:28</strong></td>
             </tr>
             <tr>
               <td>Ende partielle Phase (C4)</td>
-              <td>11:16</td>
-              <td>12:16</td>
-              <td>13:16</td>
+              <td>10:31:48</td>
+              <td>11:31:48</td>
+              <td>12:31:48</td>
             </tr>
             <tr>
               <td><strong>Dauer der Totalität</strong></td>
-              <td colspan="3"><strong>ca. 5 Min. 40 Sek.</strong> (Sfax Zentrum; nahe Zentrallinie bis ca. 5 Min. 45 Sek.)</td>
+              <td colspan="3"><strong>5 Min. 41,2 Sek.</strong> (inkl. Mondrand-Korrektur; ca. 19,7 km nördlich der Zentrallinie)</td>
             </tr>
           </tbody>
         </table>
@@ -100,14 +101,20 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
-    const sfaxCoords = [34.7406, 10.7603];
+    const sfaxCoords = [34.74062, 10.76030];
     const mapElement = document.getElementById('eclipse-map');
+
+    // Pfade zu euren beiden hochauflösenden GeoJSON-Dateien
+    const geojsonFiles = [
+      'assets/TSE_2027_08_02__51d81c9661922-1.json',
+      'assets/TSE_2027_08_02__51d81c9661922-2.json'
+    ];
 
     // Karte initialisieren (scrollWheelZoom standardmässig aus -> wird per Ctrl+Scroll aktiviert)
     const map = L.map('eclipse-map', {
       scrollWheelZoom: false,
       minZoom: 2
-    }).setView([32.0, 14.0], 4);
+    }).setView([33.5, 11.5], 6);
 
     // Dunkle Kartenkacheln (CARTO Dark Matter) inklusive API-Key
     L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key=cb1_5fu5_1_949eb69ce7daa72860cb5a46', {
@@ -252,65 +259,142 @@
     document.addEventListener('webkitfullscreenchange', syncFullscreenState);
 
     document.getElementById('btn-focus-sfax').addEventListener('click', () => {
-      map.flyTo(sfaxCoords, 6, { duration: 1.0 });
+      map.flyTo(sfaxCoords, 7, { duration: 1.0 });
       sfaxMarker.openPopup();
     });
 
     document.getElementById('btn-full-path').addEventListener('click', () => {
-      map.flyTo([20.0, 22.0], 2, { duration: 1.0 });
+      map.flyTo([20.0, 22.0], 3, { duration: 1.0 });
     });
 
-    // GeoJSON mit partieller Zone, Totalitätszone und Zentrallinie laden
-    fetch('assets/eclipse-2027-tunisia.geojson')
-      .then((response) => {
-        if (!response.ok) throw new Error('GeoJSON konnte nicht geladen werden');
-        return response.json();
-      })
-      .then((geojsonData) => {
-        L.geoJSON(geojsonData, {
-          style: (feature) => {
-            const type = feature.properties && feature.properties.type;
-            if (type === 'partial-zone') {
-              return {
-                color: '#888888',
-                weight: 1,
-                dashArray: '4, 6',
-                opacity: 0.55,
-                fillColor: '#ffcc00',
-                fillOpacity: 0.05
-              };
-            }
-            if (type === 'centerline') {
-              return {
-                color: '#ffcc00',
-                weight: 2.5,
-                dashArray: '8, 6',
-                opacity: 0.95
-              };
-            }
-            return {
-              color: '#ffcc00',
+    // Deutsche Labels & Beschreibungen für die Feature-Namen aus dem Export
+    function getFeatureMeta(rawName) {
+      const name = (rawName || '').toLowerCase();
+      if (name === 'umbra') {
+        return {
+          title: 'Totalitätszone (Kernschatten)',
+          description: 'Vollständige Verdeckung der Sonne (in Sfax 5 Min. 41 Sek., Maximum in Ägypten mit 6 Min. 23 Sek.).'
+        };
+      }
+      if (name === 'central line') {
+        return {
+          title: 'Zentrallinie (maximale Totalität)',
+          description: 'Linie mit der längsten Totalitätsdauer entlang des Kernschattenpfads.'
+        };
+      }
+      if (name === 'northern limit') {
+        return {
+          title: 'Nordgrenze der Totalität',
+          description: 'Nördlicher Rand des Kernschattens.'
+        };
+      }
+      if (name === 'southern limit') {
+        return {
+          title: 'Südgrenze der Totalität',
+          description: 'Südlicher Rand des Kernschattens.'
+        };
+      }
+      if (name.includes('penumbra')) {
+        return {
+          title: 'Partielle Zone (Halbschatten)',
+          description: 'Äussere Grenze der partiellen Sonnenfinsternis.'
+        };
+      }
+      if (name.includes('greatest')) {
+        return {
+          title: 'Globales Maximum der Finsternis',
+          description: 'Punkt der längsten Totalität weltweit (nahe Luxor, Ägypten: 6 Min. 23 Sek.).'
+        };
+      }
+      return { title: rawName || 'Finsternispfad', description: '' };
+    }
+
+    function styleEclipseFeature(feature) {
+      const name = ((feature.properties && feature.properties.name) || '').toLowerCase();
+
+      if (name === 'umbra' || feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+        return {
+          stroke: false,
+          fillColor: '#ffcc00',
+          fillOpacity: 0.22
+        };
+      }
+
+      if (name === 'central line') {
+        return {
+          color: '#ffcc00',
+          weight: 2.5,
+          dashArray: '8, 6',
+          opacity: 0.95
+        };
+      }
+
+      if (name === 'northern limit' || name === 'southern limit') {
+        return {
+          color: '#ffcc00',
+          weight: 1.5,
+          opacity: 0.8
+        };
+      }
+
+      if (name.includes('penumbra')) {
+        const partialLegend = document.getElementById('legend-partial');
+        if (partialLegend) partialLegend.hidden = false;
+        return {
+          color: '#888888',
+          weight: 1.2,
+          dashArray: '4, 6',
+          opacity: 0.6
+        };
+      }
+
+      return {
+        color: '#ffcc00',
+        weight: 1.2,
+        opacity: 0.65
+      };
+    }
+
+    // Beide GeoJSON-Dateien laden und auf der Karte darstellen
+    Promise.allSettled(
+      geojsonFiles.map((url) =>
+        fetch(url).then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status} für ${url}`);
+          return res.json();
+        })
+      )
+    ).then((results) => {
+      results.forEach((result) => {
+        if (result.status !== 'fulfilled') {
+          console.warn('Finsternispfad-Layer konnte nicht geladen werden:', result.reason);
+          return;
+        }
+
+        L.geoJSON(result.value, {
+          style: styleEclipseFeature,
+          pointToLayer: (feature, latlng) => {
+            return L.circleMarker(latlng, {
+              radius: 5,
+              color: '#121212',
               weight: 1.5,
-              opacity: 0.75,
               fillColor: '#ffcc00',
-              fillOpacity: 0.22
-            };
+              fillOpacity: 0.9
+            });
           },
           onEachFeature: (feature, layer) => {
-            if (feature.properties && feature.properties.name && feature.properties.type !== 'partial-zone') {
-              layer.bindPopup(`
-                <div class="eclipse-popup">
-                  <h4>${feature.properties.name}</h4>
-                  <p>${feature.properties.description || ''}</p>
-                </div>
-              `);
-            }
+            const rawName = feature.properties && feature.properties.name;
+            if (!rawName) return;
+            const meta = getFeatureMeta(rawName);
+            layer.bindPopup(`
+              <div class="eclipse-popup">
+                <h4>${meta.title}</h4>
+                ${meta.description ? `<p>${meta.description}</p>` : ''}
+              </div>
+            `);
           }
         }).addTo(map);
-
-        sfaxMarker.bringToFront();
-      })
-      .catch((err) => console.warn('Finsternispfad-Layer:', err));
+      });
+    });
 
     // Eigener SVG/CSS-Pin für Sfax
     const sfaxIcon = L.divIcon({
@@ -324,8 +408,8 @@
     const popupContent = `
       <div class="eclipse-popup">
         <h4>Beobachtungsregion Sfax</h4>
-        <p class="popup-coords">34.7406° N, 10.7603° E &middot; 2. Aug. 2027</p>
-        <p class="popup-duration">Totalität: <strong>ca. 5 Min. 40 Sek.</strong></p>
+        <p class="popup-coords">34.74062° N, 10.76030° E &middot; 2. Aug. 2027</p>
+        <p class="popup-duration">Totalität: <strong>5 Min. 41,2 Sek.</strong></p>
         <table class="popup-table">
           <thead>
             <tr>
@@ -336,11 +420,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>C1 (Start)</td><td>08:41</td><td>09:41</td><td>10:41</td></tr>
-            <tr class="popup-hi"><td>C2 (Total)</td><td>09:53:25</td><td>10:53:25</td><td>11:53:25</td></tr>
-            <tr class="popup-hi"><td>Maximum</td><td>09:56:15</td><td>10:56:15</td><td>11:56:15</td></tr>
-            <tr class="popup-hi"><td>C3 (Ende)</td><td>09:59:05</td><td>10:59:05</td><td>11:59:05</td></tr>
-            <tr><td>C4 (Ende)</td><td>11:16</td><td>12:16</td><td>13:16</td></tr>
+            <tr><td>C1 (Start)</td><td>07:56:27</td><td>08:56:27</td><td>09:56:27</td></tr>
+            <tr class="popup-hi"><td>C2 (Total)</td><td>09:08:47</td><td>10:08:47</td><td>11:08:47</td></tr>
+            <tr class="popup-hi"><td>Maximum</td><td>09:11:39</td><td>10:11:39</td><td>11:11:39</td></tr>
+            <tr class="popup-hi"><td>C3 (Ende)</td><td>09:14:28</td><td>10:14:28</td><td>11:14:28</td></tr>
+            <tr><td>C4 (Ende)</td><td>10:31:48</td><td>11:31:48</td><td>12:31:48</td></tr>
           </tbody>
         </table>
       </div>

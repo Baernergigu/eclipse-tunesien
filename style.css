@@ -295,6 +295,12 @@ footer {
   box-shadow: 0 0 8px var(--accent-color);
 }
 
+.swatch-limit {
+  height: 0;
+  border-top: 2px solid var(--accent-color);
+  opacity: 0.85;
+}
+
 /* Sfax Pin auf der Karte */
 .sfax-pin {
   width: 16px;
