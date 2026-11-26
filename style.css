@@ -391,14 +391,61 @@ footer {
   border-radius: 4px;
   background-color: var(--accent-color);
   color: var(--primary-bg);
+  font: inherit;
   font-weight: 700;
   text-decoration: none;
+  cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .booking-button:hover {
   background-color: transparent;
   color: var(--accent-color);
+}
+
+.booking-button-status {
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  background-color: var(--primary-bg);
+  color: var(--accent-color);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.booking-button:hover .booking-button-status {
+  background-color: var(--accent-color);
+  color: var(--primary-bg);
+}
+
+.booking-dialog {
+  width: min(32rem, calc(100% - 2rem));
+  margin: auto;
+  padding: 2rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  background-color: var(--secondary-bg);
+  color: var(--text-main);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.booking-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.72);
+}
+
+.booking-dialog h2 {
+  margin-bottom: 0.75rem;
+  color: var(--accent-color);
+  font-size: 1.4rem;
+}
+
+.booking-dialog p {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+.booking-dialog form {
+  text-align: right;
 }
 
 .booking-button:focus-visible,

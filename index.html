@@ -76,8 +76,10 @@
                     <p class="flight-date">Montag, 2. August 2027</p>
                     <h2 id="flight-details-heading">Flug nach Sfax</h2>
                 </div>
-                <a class="booking-button" href="https://www.eclipse-tunesien.ch" target="_blank"
-                    rel="noopener noreferrer">Buchen <span aria-hidden="true">&rarr;</span></a>
+                <button class="booking-button" id="booking-button" type="button" aria-haspopup="dialog"
+                    aria-controls="booking-notice">
+                    Buchen <span class="booking-button-status">In Kürze</span>
+                </button>
             </div>
 
             <div class="flight-routes">
@@ -138,6 +140,15 @@
             <p class="flight-note">Die Flugzeiten sind provisorisch und nicht garantiert. Änderungen sind möglich;
                 aktuelle Informationen und Treffpunkte teilen wir rechtzeitig mit.</p>
         </section>
+
+        <dialog class="booking-dialog" id="booking-notice" aria-labelledby="booking-notice-title">
+            <h2 id="booking-notice-title">Buchung noch nicht möglich</h2>
+            <p>Die Buchung wird in den nächsten Tagen freigeschaltet. Schau bald wieder vorbei – hier geht es dann
+                direkt zur Buchung.</p>
+            <form method="dialog">
+                <button class="booking-button" type="submit">Alles klar</button>
+            </form>
+        </dialog>
 
         <section class="content-card" id="finsternis-karte">
             <h2>Finsternispfad &amp; Beobachtungsregion Sfax</h2>
@@ -557,6 +568,11 @@
             .addTo(map)
             .bindPopup(popupContent, { maxWidth: 320 })
             .openPopup();
+    </script>
+    <script>
+        document.getElementById('booking-button').addEventListener('click', () => {
+            document.getElementById('booking-notice').showModal();
+        });
     </script>
 </body>
 
