@@ -87,9 +87,9 @@ main {
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 1rem;
-    color: var(--text-main);
+    color: var(--accent-color);
 }
 
 .hero p {
@@ -332,6 +332,10 @@ footer {
   background-color: var(--secondary-bg);
 }
 
+.team-photo-stefan {
+  object-position: center 20%;
+}
+
 .team-card-content {
   padding: 1.25rem;
 }
@@ -353,30 +357,6 @@ footer {
 
 .team-card-content p:last-child {
   margin-bottom: 0;
-}
-
-.team-photo-private {
-  display: flex;
-  aspect-ratio: 4 / 3;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  background: linear-gradient(145deg, var(--secondary-bg), #292617);
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-.team-photo-private span:first-child {
-  display: grid;
-  width: 3.25rem;
-  height: 3.25rem;
-  place-items: center;
-  border: 1px solid var(--accent-color);
-  border-radius: 50%;
-  color: var(--accent-color);
-  font-size: 1.5rem;
-  font-weight: 700;
 }
 
 /* Flight details on the home page */
