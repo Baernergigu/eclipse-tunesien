@@ -91,6 +91,12 @@ nav ul li a:hover {
     vertical-align: middle;
 }
 
+.coming-soon-reference {
+    color: var(--accent-color);
+    text-decoration: underline dotted;
+    text-underline-offset: 0.15em;
+}
+
 /* Main Content */
 main {
     flex: 1;
